@@ -23,7 +23,7 @@ from matplotlib.colors import LinearSegmentedColormap
 import seaborn as sns
 import seaborn.objects as so
 
-import scipy
+import scipy as sp
 from scipy.optimize import LinearConstraint
 from scipy.optimize import minimize
 
@@ -44,14 +44,16 @@ import time
 
 
 
+def f(x1, x2, x3, x4):
+    offset = np.random.normal(0, 10, 4)
+    parameters = np.array([x1,x2,x3,x4]) + offset
+    return parameters.sum()
+
+
+
 def main():
-    from sklearn.datasets import make_friedman2
-    X, y = make_friedman2(n_samples=500, noise=0, random_state=0)
-    kernel = DotProduct() + WhiteKernel()
-    gpr = GaussianProcessRegressor(kernel=kernel,
-            random_state=0).fit(X, y)
-    gpr.score(X, y)
-    gpr.predict(X[:2,:], return_std=True)
+    sp
+    return 0
 
 
 if __name__ == "__main__":

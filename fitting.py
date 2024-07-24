@@ -49,6 +49,8 @@ import time
 def main():
     from sklearn.datasets import make_friedman2
     X, y = make_friedman2(n_samples=500, noise=0, random_state=0)
+    print(X.shape)
+    print(y.shape)
     kernel = DotProduct() + WhiteKernel()
     gpr = GaussianProcessRegressor(kernel=kernel,
             random_state=0).fit(X, y)
