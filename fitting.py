@@ -1,61 +1,35 @@
-'''
-file name: 'fitting.py'
-repository: 'ILP-Land-Usage'
-@author: evanh
-._.
-
-Requirements:
-    - 
 
 
-'''
+def train(file, features):
+    import pandas as pd
+    from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+    from sklearn import ensemble
 
+    training_data = pd.read_csv(file, index_col='ID')
+    training_data = training_data.dropna(axis=0)
 
+    X = training_data[features]
+    y = training_data.Happiness
 
-import numpy as np
-import pandas as pd
+    #clf = LinearDiscriminantAnalysis()
+    #clf.fit(X.to_numpy(), y.to_numpy())
 
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import matplotlib.colors as mcol
-from matplotlib.colors import LinearSegmentedColormap
+    model = ensemble.RandomForestRegressor(random_state=2024, n_estimators=200)
+    model.fit(X, y)
 
-import seaborn as sns
-import seaborn.objects as so
-
-import sklearn as skl
-from sklearn.gaussian_process import GaussianProcessRegressor # example algorithm
-from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel
-from sklearn.decomposition import PCA
-from sklearn.metrics.pairwise import pairwise_distances_argmin_min
-
-from collections import Counter
-
-import math
-import random
-import sys
-import time
-
-
-
-'''
---------------------------------------------------------------------------
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-'''
-
+    return model
+    
 
 
 def main():
-    from sklearn.datasets import make_friedman2
-    X, y = make_friedman2(n_samples=500, noise=0, random_state=0)
-    print(X.shape)
-    print(y.shape)
-    kernel = DotProduct() + WhiteKernel()
-    gpr = GaussianProcessRegressor(kernel=kernel,
-            random_state=0).fit(X, y)
-    gpr.score(X, y)
-    gpr.predict(X[:2,:], return_std=True)
+    
+    file = 'dataset(small).csv'
+    features = ["Population","Land size","Working hours","Corruption","Environment","Income","Cost of living","N recreational buildings","N office buildings","N essential buildings","N residential buildings"]
+
+    model = train(file, features)
+
+    return model
+
 
 
 if __name__ == "__main__":
