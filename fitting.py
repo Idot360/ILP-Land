@@ -8,8 +8,8 @@ def train(file, features):
     training_data = pd.read_csv(file, index_col='ID')
     training_data = training_data.dropna(axis=0)
 
-    X = training_data[features]
-    y = training_data.Happiness
+    X = training_data[features].to_numpy()
+    y = training_data.Happiness.to_numpy()
 
     #clf = LinearDiscriminantAnalysis()
     #clf.fit(X.to_numpy(), y.to_numpy())

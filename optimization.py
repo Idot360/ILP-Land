@@ -4,7 +4,7 @@ def f(x1, x2, x3, x4):
     #parameters = np.array([x1,x2,x3,x4]) + offset
     
     c1, c2, c3, c4, c5, c6, c7 = CONSTANTS
-    return MODEL.predict()
+    return MODEL.predict([c1,c2,c3,c4,c5,c6,c7,x1,x2,x3,x4])
 
 
 
@@ -32,7 +32,9 @@ def main(feature_constants):
     
     bnds = ((1, buildings_max), (1, buildings_max), (1, buildings_max), (1, buildings_max))
 
-    return minimize(f, [5, 5, 5, 5], bounds=bnds, constraints=cons)
+    print(f)
+
+    return minimize(f, [15000, 5, 5, 5], bounds=bnds, constraints=cons)
 
 
 if __name__ == "__main__":
