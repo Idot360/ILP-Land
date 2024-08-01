@@ -1,4 +1,4 @@
-ID,Population,Land size,Working hours,Corruption,Environment,Income,Cost of living,N recreational buildings,N office buildings,N essential buildings,N residential buildings,Happiness
+ID,Population / million,Land size / km^2,Working hours/ hrs per week,Corruption/ rating of 1-10,Environment / rating of 1-10,Income per year/ SGD,Cost of living per year/SGD,Number of recreational buildings,Number of office buildings,"Number of essential buildings (hospitals, schools, police stations, fire stations, libraries, museums)",Number of residential buildings / thousands,Happiness
 1,8.3,1214,34,3,5,92500,108000,14000,7500,2540,1100,7
 2,4,1302,34,3,4,83000,99600,7000,4000,1835,1500,7
 3,2.7,606,34,4,5,83000,87000,4000,2500,960,600,6.5

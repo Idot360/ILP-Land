@@ -2,7 +2,7 @@
 
 def train(file, features):
     import pandas as pd
-    from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+    from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
     from sklearn import ensemble
 
     training_data = pd.read_csv(file, index_col='ID')
@@ -11,8 +11,8 @@ def train(file, features):
     X = training_data[features].to_numpy()
     y = training_data.Happiness.to_numpy()
 
-    #clf = LinearDiscriminantAnalysis()
-    #clf.fit(X.to_numpy(), y.to_numpy())
+    #clf = QuadraticDiscriminantAnalysis()
+    #clf.fit(X, y)
 
     model = ensemble.RandomForestRegressor(random_state=2024, n_estimators=200)
     model.fit(X, y)
@@ -23,8 +23,8 @@ def train(file, features):
 
 def main():
     
-    file = 'dataset(small).csv'
-    features = ["Population","Land size","Working hours","Corruption","Environment","Income","Cost of living","N recreational buildings","N office buildings","N essential buildings","N residential buildings"]
+    file = 'processed_data.csv'
+    features = ["Population","Land size","Working hours","Environment","Income","Cost of living","N recreational buildings","N office buildings","N essential buildings","N residential buildings"]
 
     model = train(file, features)
 
