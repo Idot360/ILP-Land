@@ -2,48 +2,37 @@
 
 Optimization target: Happiness (H)
 
-Additional minimization target: Cost (C)
-
----
-
-function(F)
-
-measured(M)
-
 ---
 
 Parameters:
 
-Affordability (F) - Income & Cost of living (M)
+Population
 
-Population (M)
+Income & Cost of living
 
-Land Size (M)
+Population
 
-Average work hours (M)
+Land Size 
 
-Government style (M)
+Environment
 
-Government corruption (M)
+Average work hours
 
-Environment (F)
+Number of buildings (target) - Recreational & Office & Residential & Necessities 
 
-Number of buildings (F, target) - total & recreational & Office & Residential & Necessities (M)
+---
+
+Population and Land Size to be rescaled, and Income and Cost of Living to be combined to reduce the number of parameters
 
 ---
 
 General Idea:
 
-Regression fitting the parameters to a function (record variance)
+Regression fitting the parameters to a function (polynomial regression)
 
 Use basic optimization algorithms to find optimal buildings 
 
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html
 ```
-fmin is for finding minima. We can use it to find maxima though, but finding the minima of −f(x)
-```
-
-account for variance by using a random matrix with set mean and s.d. (basically a simulation)
-```
-Use numpy.random.normal to general coefficients for the parameters; then multiply each of the coefficients before optimizing
+fmin is for finding minima. To find maxima, find minima of −f(x)
 ```
